@@ -1,0 +1,22 @@
+<% if(theme.toc){
+    var topic = toc(post.content, {
+            class: 'post-toc',
+            list_number: theme.toc.list_number
+        })
+    if(topic) {
+    %>
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>扫码关注「BONFY学编程」</h4>
+            <h5>获得博客最新内容 </h5>
+            <img class="post-weixin" src="/img/weixin.jpg" alt="扫码关注本博客的微信公众号">
+
+            <h4>TOC</h4>
+            <%- toc(post.content, {
+                class: 'post-toc',
+                list_number: theme.toc.list_number
+            }) %>
+        </nav>
+    </aside>
+    <% }
+} %>
