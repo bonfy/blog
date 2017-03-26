@@ -10,6 +10,8 @@ install:
   - npm install  #安装hexo及插件
 
 script:
+  - git submodule init      # 用于更新主题
+  - git submodule update
   - hexo clean  #清除
   - hexo g  #生成
 
