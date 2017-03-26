@@ -1,6 +1,6 @@
 ---
 title: 使用pipenv
-date: 2017-02-25 08:40:35
+date: 2017-02-26 08:40:35
 tags: python virtualenv
 ---
 
