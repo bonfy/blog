@@ -22,12 +22,23 @@ tags: Vim
 - `k` - Move Up
 - `l` - Move Right
 
+Insertion Mode
+- `i` - insert before letter
+- `I` - insert beginning line
+- `a` - append after letter
+- `A` - append after line
+- `o` - open a new line after current line
+- `O` - open a new line before current line
+
+Change Mode
+- `r` - replace a single character
+- `R` - replace all following character
+
+
 Press `:` command
+
 
 - `w` - Save
 - `q` - Quit
 - `q!` - Quit without save
 - `wq` - Save and Quit
-
-- `i` - insert
-- `I` - insert at beginning of the line
