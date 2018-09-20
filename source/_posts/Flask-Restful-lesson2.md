@@ -1,5 +1,9 @@
+---
 title: Flask-Restful-lesson2
-date: 2014-09-11 21:39:26
+date: 2014-09-12 21:39:26
+tags:
+  - Python
+  - Flask
 ---
 
 咱们接着上次的lesson1 接着往下看，首先我们已经利用Flask 创建了 简单的Restful实现

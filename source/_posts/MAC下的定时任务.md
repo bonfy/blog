@@ -1,5 +1,7 @@
+---
 title: MAC下的定时任务
 date: 2014-10-25 16:43:49
+tags: crontab
 ---
 
 linux之下可以用 crontab 不过在MAC下无效

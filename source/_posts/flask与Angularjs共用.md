@@ -1,5 +1,9 @@
+---
 title: flask与Angularjs共用
 date: 2014-09-02 19:55:34
+tags: 
+  - Python
+  - Flask
 ---
 解决办法 1：
 替换 AngularJS 中使用的标识符

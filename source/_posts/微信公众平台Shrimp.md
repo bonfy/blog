@@ -1,5 +1,7 @@
+---
 title: 微信公众平台Shrimp
 date: 2014-09-17 23:30:53
+tags: weixin
 ---
 
 微信公众账号：Shrimp 上线 ！！

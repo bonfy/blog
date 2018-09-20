@@ -1,5 +1,9 @@
+---
 title: Flask-Restful-lesson1
 date: 2014-09-11 21:18:44
+tags: 
+  - Python
+  - Flask
 ---
 
 仅以此文纪念我的Flask-Restful学习之路

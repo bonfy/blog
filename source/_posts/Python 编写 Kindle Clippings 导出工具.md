@@ -1,7 +1,9 @@
 ---
 title: Python 编写 Kindle Clippings 导出工具
 date: 2017-03-01 18:40:36
-tags: python, Kindle
+tags: 
+  - Python
+  - Kindle
 ---
 
 ## 缘起
