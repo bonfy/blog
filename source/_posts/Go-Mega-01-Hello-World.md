@@ -61,7 +61,7 @@ http://localhost:8888
 http://127.0.0.1:8888
 ```
 
-![01-01](https://i.imgur.com/lQSba2P.png)
+![01-01](https://github.com/bonfy/go-mega/blob/master/images/01-01.png?raw=true)
 
 ## 说明
 
