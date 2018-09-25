@@ -1,14 +1,14 @@
 ---
-title: [Go-Mega] 01-Hello World
-date: 2018-09-25 08:18:44
-tags: 
-  - Go
-  - Go-Mega
+title: Go Mega - 01 Hello World
+date: 2018-09-25 11:01:28
+tags:
+    - Go
+    - Go-Mega
 ---
 
-一般教程的起始总是 Hello World
+一般计算机书的开头都是 Hello World
 
-我们亦不能免俗，所以本章我们的任务就是完成最简单的 Hello World
+我们亦不能免俗，所以本章我们的任务就是完成最简的 Hello World
 
 _本章的GitHub链接为：_ [Source](https://github.com/bonfy/go-mega-code/tree/01-Hello-World)
 
@@ -97,4 +97,3 @@ func ListenAndServe(addr string, handler Handler) error
 这里如果想更深入的了解 net/http 处理请求的话，可以看下Go源码中的 `net/http/server.go`
 
 或者看下 [Go的http包详解](https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/03.4.md)
-
