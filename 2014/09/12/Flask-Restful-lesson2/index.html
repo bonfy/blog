@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="BONFY BLOG">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Flask-Restful-lesson2 - BONFY&#39;S BLOG
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 一直在编程的路上 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>BONFY</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="https://bonfy.im">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 一直在编程的路上 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Flask-Restful-lesson2
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2014-09-12 21:39:26</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Python" title="Python">Python</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Flask" title="Flask">Flask</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>咱们接着上次的lesson1 接着往下看，首先我们已经利用Flask 创建了 简单的Restful实现<br>接下去，我们将要看到如何加入数据库</p>
+<p>Double Kill:</p>
+<p>先上代码，view.py:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding:utf-8  -*-</span></span><br><span class="line"><span class="keyword">from</span> app <span class="keyword">import</span> app</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> models <span class="keyword">import</span> Task</span><br><span class="line"><span class="keyword">from</span> app <span class="keyword">import</span> db</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> jsonify,request,abort,make_response</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="comment">######################</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># HTTP Status Handler</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">######################</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.errorhandler(404)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_found</span><span class="params">(error)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> make_response(jsonify( &#123; <span class="string">'error'</span>:<span class="string">'Not Found 404'</span> &#125; ),<span class="number">404</span>)</span><br><span class="line">    </span><br><span class="line"><span class="meta">@app.errorhandler(400)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">error_400</span><span class="params">(error)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> make_response(jsonify( &#123; <span class="string">'error'</span>:<span class="string">'Error 400'</span> &#125; ),<span class="number">400</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">######################</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Route And RestFul</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">######################</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="meta">@app.route('/index')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello world"</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">@app.route('/todo/api/v1.0/tasks', methods = ['GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_tasks</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment">#tasks = Task.query.get(1)</span></span><br><span class="line">    <span class="comment">#print tasks</span></span><br><span class="line">    <span class="comment">#return json.dumps(data1)#,sort_keys=True,indent=4)</span></span><br><span class="line">    <span class="comment">#return jsonify(tasks.to_json())</span></span><br><span class="line">    <span class="comment">#只能解决单个的to_json()</span></span><br><span class="line">    </span><br><span class="line">    tasks = Task.query.all()</span><br><span class="line">    <span class="keyword">print</span> tasks</span><br><span class="line">    <span class="comment">#json_list=[i.serialize for i in qryresult.all()]</span></span><br><span class="line">    <span class="keyword">return</span> jsonify(json_list = [i.to_json() <span class="keyword">for</span> i <span class="keyword">in</span> tasks])</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/todo/api/v1.0/tasks', methods = ['POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_task</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> request.json <span class="keyword">or</span> <span class="keyword">not</span> <span class="string">'title'</span> <span class="keyword">in</span> request.json:</span><br><span class="line">        abort(<span class="number">400</span>)</span><br><span class="line">        </span><br><span class="line">    task = Task(title = request.json[<span class="string">'title'</span>],description=request.json.get(<span class="string">'description'</span>, <span class="string">""</span>),done=<span class="keyword">False</span>)</span><br><span class="line">    db.session.add(task)</span><br><span class="line">    db.session.commit()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> jsonify(  task = task.to_json() ), <span class="number">201</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/todo/api/v1.0/tasks/&lt;int:task_id&gt;', methods = ['GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_task</span><span class="params">(task_id)</span>:</span></span><br><span class="line">    task = Task.query.filter_by(id = task_id).first()</span><br><span class="line">    <span class="keyword">if</span> task == <span class="keyword">None</span>:</span><br><span class="line">        abort(<span class="number">404</span>)</span><br><span class="line">    <span class="keyword">return</span> jsonify(  task = task.to_json()  )</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/todo/api/v1.0/tasks/&lt;int:task_id&gt;', methods = ['PUT'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_task</span><span class="params">(task_id)</span>:</span></span><br><span class="line">    task = Task.query.filter_by(id = task_id).first()</span><br><span class="line">    <span class="keyword">if</span> task == <span class="keyword">None</span>:</span><br><span class="line">        abort(<span class="number">404</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> request.json:</span><br><span class="line">        abort(<span class="number">400</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">'title'</span> <span class="keyword">in</span> request.json <span class="keyword">and</span> type(request.json[<span class="string">'title'</span>]) != unicode:</span><br><span class="line">        abort(<span class="number">400</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">'description'</span> <span class="keyword">in</span> request.json <span class="keyword">and</span> type(request.json[<span class="string">'description'</span>]) <span class="keyword">is</span> <span class="keyword">not</span> unicode:</span><br><span class="line">        abort(<span class="number">400</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">'done'</span> <span class="keyword">in</span> request.json <span class="keyword">and</span> type(request.json[<span class="string">'done'</span>]) <span class="keyword">is</span> <span class="keyword">not</span> bool:</span><br><span class="line">        abort(<span class="number">400</span>)</span><br><span class="line">    task.title = request.json.get(<span class="string">'title'</span>, task.title)</span><br><span class="line">    task.description = request.json.get(<span class="string">'description'</span>, task.description)</span><br><span class="line">    task.done = request.json.get(<span class="string">'done'</span>, task.done)</span><br><span class="line">    </span><br><span class="line">    db.session.flush()</span><br><span class="line">    db.session.commit()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> jsonify( task = task.to_json() )</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/todo/api/v1.0/tasks/&lt;int:task_id&gt;', methods = ['DELETE'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete_task</span><span class="params">(task_id)</span>:</span></span><br><span class="line">    task = Task.query.filter_by(id = task_id).first()</span><br><span class="line">    <span class="keyword">if</span> task == <span class="keyword">None</span>:</span><br><span class="line">        abort(<span class="number">404</span>)</span><br><span class="line">    db.session.delete(task)</span><br><span class="line">    db.session.commit()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> jsonify( &#123; <span class="string">'result'</span>: <span class="keyword">True</span> &#125; )</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>models.py：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding:utf-8  -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app <span class="keyword">import</span> db</span><br><span class="line"></span><br><span class="line">ROLE_USER = <span class="number">0</span></span><br><span class="line">ROLE_ADMIN = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(db.Model)</span>:</span></span><br><span class="line">    id = db.Column(db.Integer, primary_key = <span class="keyword">True</span>)</span><br><span class="line">    nickname = db.Column(db.String(<span class="number">64</span>), index = <span class="keyword">True</span>, unique = <span class="keyword">True</span>)</span><br><span class="line">    email = db.Column(db.String(<span class="number">120</span>), index = <span class="keyword">True</span>, unique = <span class="keyword">True</span>)</span><br><span class="line">    role = db.Column(db.SmallInteger, default = ROLE_USER)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'&lt;User %r&gt;'</span> % (self.nickname)</span><br><span class="line">    </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Task</span><span class="params">(db.Model)</span>:</span></span><br><span class="line">    id = db.Column(db.Integer, primary_key = <span class="keyword">True</span>)</span><br><span class="line">    title = db.Column(db.String(<span class="number">50</span>))</span><br><span class="line">    description = db.Column(db.String(<span class="number">120</span>))</span><br><span class="line">    done = db.Column(db.Boolean,default= <span class="keyword">False</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'&lt;Task %r&gt;'</span> % (self.title)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">to_json</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">'id'</span>: self.id,</span><br><span class="line">            <span class="string">'title'</span>: self.title,</span><br><span class="line">            <span class="string">'description'</span>: self.description,</span><br><span class="line">            <span class="string">'done'</span>:self.done</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里就是利用Sqlalchemy链接数据库，Python的ORM，大家可以去了解下，我其实也不太了解，反正这样子就实现了与数据库的链接</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-img-container" id="donate-img-container">
+        <p>  </p>
+        <img id="donate-img" src="/img/donate.jpg" alt="感谢赞助">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/foreverbonfy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/bonfy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://blog.bonfy.im">BLOG</a></span>
+        <span>/</span>
+        
+        <span><a href="https://bonfy.im">Main Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    <p>&copy; 2018 <a href="https://bonfy.im">BONFY</a> &middot; 
+
+        Powered by the
+        <a href="https://hexo.io/">Hexo</a> Theme 
+        <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+  </p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/busuanzi.js"></script>
+
+</html>

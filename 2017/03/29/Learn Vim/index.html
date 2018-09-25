@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="BONFY BLOG">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Learn Vim - BONFY&#39;S BLOG
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 一直在编程的路上 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>BONFY</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="https://bonfy.im">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缘起"><span class="toc-text">缘起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim命令"><span class="toc-text">Vim命令</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 一直在编程的路上 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Learn Vim
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-03-29 08:40:35</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Vim" title="Vim">Vim</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>反正最好的编辑器之争由来已久，<code>Vim</code> 和 <code>Emacs</code>孰优孰劣争了这么久也没个结果。</p>
+<p>我自己一直想去亲身探个究竟，但是几度往返，也只是窥了个皮毛，一直不用，又忘了个精光，今天重新开始学<code>Vim</code>，也对一些命令稍微记录下</p>
+<blockquote>
+<p>先诛Vim,后灭Emacs</p>
+</blockquote>
+<p>哎，只能慢慢来了，估计一时半会能用就不错了，牛还是先不吹了</p>
+<h2 id="Vim命令"><a href="#Vim命令" class="headerlink" title="Vim命令"></a>Vim命令</h2><ul>
+<li><code>h</code> - Move Left</li>
+<li><code>j</code> - Move Down</li>
+<li><code>k</code> - Move Up</li>
+<li><code>l</code> - Move Right</li>
+</ul>
+<p>Insertion Mode</p>
+<ul>
+<li><code>i</code> - insert before letter</li>
+<li><code>I</code> - insert beginning line</li>
+<li><code>a</code> - append after letter</li>
+<li><code>A</code> - append after line</li>
+<li><code>o</code> - open a new line after current line</li>
+<li><code>O</code> - open a new line before current line</li>
+</ul>
+<p>Change Mode</p>
+<ul>
+<li><code>r</code> - replace a single character</li>
+<li><code>R</code> - replace all following character</li>
+</ul>
+<p>Press <code>:</code> command</p>
+<ul>
+<li><code>w</code> - Save</li>
+<li><code>q</code> - Quit</li>
+<li><code>q!</code> - Quit without save</li>
+<li><code>wq</code> - Save and Quit</li>
+</ul>
+
+        
+            <div class="donate-container">
+    <div class="donate-img-container" id="donate-img-container">
+        <p>  </p>
+        <img id="donate-img" src="/img/donate.jpg" alt="感谢赞助">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/foreverbonfy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/bonfy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://blog.bonfy.im">BLOG</a></span>
+        <span>/</span>
+        
+        <span><a href="https://bonfy.im">Main Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    <p>&copy; 2018 <a href="https://bonfy.im">BONFY</a> &middot; 
+
+        Powered by the
+        <a href="https://hexo.io/">Hexo</a> Theme 
+        <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+  </p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/busuanzi.js"></script>
+
+</html>

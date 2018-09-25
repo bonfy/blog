@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="BONFY BLOG">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Python 编写 Kindle Clippings 导出工具 - BONFY&#39;S BLOG
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 一直在编程的路上 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>BONFY</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="https://bonfy.im">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缘起"><span class="toc-text">缘起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目标"><span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整代码"><span class="toc-text">完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现结果"><span class="toc-text">实现结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#友情提醒"><span class="toc-text">友情提醒</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 一直在编程的路上 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Python 编写 Kindle Clippings 导出工具
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-03-01 18:40:36</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Python" title="Python">Python</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Kindle" title="Kindle">Kindle</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>刚入手一个kindle,一直在上面看书，并坚持写小结，里面需要把kindle里面的批注写进自己的小结里面备忘，本来是用的Knote,其实还蛮好用的，但只有7天的试用期，<strong>又不想花钱</strong>，算了看了下kindle 下面批注的文件 <code>My Clippings.txt</code>好像结构也不是太复杂，就自己写个脚本。</p>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>读取 kindle 里的<code>My Clippings.txt</code>，将其每本书的批注导出，存入<code>书名.md</code></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>其实 这里可以用 ipython 先试着写下，看看结构</p>
+<p><img src="http://bonfy.qiniudn.com/kindle-1.png" alt="图一"><br><img src="http://bonfy.qiniudn.com/kindle-2.png" alt="图二"></p>
+<p>分析出分割符 “==========\r\n”</p>
+<p><img src="http://bonfy.qiniudn.com/kindle-3.png" alt="图三"></p>
+<p>分析出用 “\r\n” 进行分隔后 第一项为 书名， 倒数第二项为 备注</p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p>其实代码不长，简单的IO读写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> codecs</span><br><span class="line"></span><br><span class="line">FOLDER_DIR = <span class="string">'/Volumes/Kindle/documents/'</span> <span class="comment"># MAC下的文件夹地址</span></span><br><span class="line">CLIPPINGS_FILE = os.path.join(FOLDER_DIR, <span class="string">'My Clippings.txt'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_get_content</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">""" Get content from My Clippings.txt</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">assert</span> os.path.exists(CLIPPINGS_FILE)</span><br><span class="line">    <span class="keyword">with</span> codecs.open(CLIPPINGS_FILE, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        content = f.read()</span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_add_memo_to_file</span><span class="params">(memo, filename)</span>:</span></span><br><span class="line">    <span class="string">""" Add memo to file</span></span><br><span class="line"><span class="string">    :param memo string:     memo</span></span><br><span class="line"><span class="string">    :param filename string: filename</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(filename):</span><br><span class="line">        <span class="keyword">with</span> codecs.open(filename, mode=<span class="string">'a'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(<span class="string">'# &#123;&#125;\n\n'</span>.format(filename[:<span class="number">-3</span>]))</span><br><span class="line">    <span class="keyword">with</span> codecs.open(filename, mode=<span class="string">'a'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(<span class="string">'* &#123;&#125;\n'</span>.format(memo))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">""" main</span></span><br><span class="line"><span class="string">    step1: get content</span></span><br><span class="line"><span class="string">    step2: split to memos with '==========\r\n'</span></span><br><span class="line"><span class="string">    step3: each item add_memo_to_file</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    content = _get_content()</span><br><span class="line">    memos = content.split(<span class="string">'==========\r\n'</span>)</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> memos:</span><br><span class="line">        i = item.split(<span class="string">'\r\n'</span>)</span><br><span class="line">        <span class="keyword">if</span> len(i) &gt; <span class="number">2</span>:</span><br><span class="line">            filename = i[<span class="number">0</span>] + <span class="string">'.md'</span></span><br><span class="line">            memo = i[<span class="number">-2</span>]</span><br><span class="line">            _add_memo_to_file(memo, filename)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h2 id="实现结果"><a href="#实现结果" class="headerlink" title="实现结果"></a>实现结果</h2><p>直接command输入运行</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 kindle-clippings.py</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<p><img src="http://bonfy.qiniudn.com/kindle-4.png" alt="图四"></p>
+<h2 id="友情提醒"><a href="#友情提醒" class="headerlink" title="友情提醒"></a>友情提醒</h2><ol>
+<li>请记得先把Kindle连上电脑</li>
+<li>此程序在mac下面能够正常运行，Windows下面请修改 <code>FOLDER_DIR</code></li>
+<li>导出来的 markdown 文件建议 copy 导其他文件夹再编辑，一面辛辛苦苦地排版半天，下次导出又全部覆盖掉，别说我没提醒你哦</li>
+</ol>
+
+        
+            <div class="donate-container">
+    <div class="donate-img-container" id="donate-img-container">
+        <p>  </p>
+        <img id="donate-img" src="/img/donate.jpg" alt="感谢赞助">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/foreverbonfy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/bonfy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://blog.bonfy.im">BLOG</a></span>
+        <span>/</span>
+        
+        <span><a href="https://bonfy.im">Main Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    <p>&copy; 2018 <a href="https://bonfy.im">BONFY</a> &middot; 
+
+        Powered by the
+        <a href="https://hexo.io/">Hexo</a> Theme 
+        <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+  </p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/busuanzi.js"></script>
+
+</html>

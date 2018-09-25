@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="BONFY BLOG">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Flask-Restful-lesson1 - BONFY&#39;S BLOG
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 一直在编程的路上 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>BONFY</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="https://bonfy.im">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 一直在编程的路上 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Flask-Restful-lesson1
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2014-09-11 21:18:44</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Python" title="Python">Python</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Flask" title="Flask">Flask</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>仅以此文纪念我的Flask-Restful学习之路<br>先在开头介绍一下大神 <a href="http://blog.miguelgrinberg.com/" target="_blank" rel="noopener">Miguelgrinberg</a> 本文大部分借鉴了他的Restful文章</p>
+<p>First Blood：</p>
+<p>先上代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># *-* coding:utf-8 *-*</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> render_template, flash, redirect, session, url_for, request, g</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> jsonify</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> abort</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> make_response</span><br><span class="line"><span class="keyword">from</span> app <span class="keyword">import</span> app</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">tasks = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">'id'</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="string">'title'</span>: <span class="string">u'Buy groceries'</span>,</span><br><span class="line">        <span class="string">'description'</span>: <span class="string">u'Milk, Cheese, Pizza, Fruit, Tylenol'</span>,</span><br><span class="line">        <span class="string">'done'</span>: <span class="keyword">False</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">'id'</span>: <span class="number">2</span>,</span><br><span class="line">        <span class="string">'title'</span>: <span class="string">u'Learn Python'</span>,</span><br><span class="line">        <span class="string">'description'</span>: <span class="string">u'Need to find a good Python tutorial on the web'</span>,</span><br><span class="line">        <span class="string">'done'</span>: <span class="keyword">False</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">######################</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Personal function</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">######################</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getTaskByID</span><span class="params">(task_id,tasks)</span>:</span></span><br><span class="line">	<span class="keyword">for</span> task <span class="keyword">in</span> tasks:</span><br><span class="line">		<span class="keyword">print</span> task</span><br><span class="line">		<span class="keyword">if</span> task[<span class="string">'id'</span>] == task_id:</span><br><span class="line">			<span class="keyword">return</span> task</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">None</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">######################</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># HTTP Status Handler</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">######################</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.errorhandler(404)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_found</span><span class="params">(error)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> make_response(jsonify( &#123; <span class="string">'error'</span>:<span class="string">'Not Found 404'</span> &#125; ),<span class="number">404</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.errorhandler(400)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">error_400</span><span class="params">(error)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> make_response(jsonify( &#123; <span class="string">'error'</span>:<span class="string">'Error 400'</span> &#125; ),<span class="number">400</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">######################</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Route And RestFul</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">######################</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">default</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'index.html'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/todo/api/v1.0/tasks', methods = ['GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_tasks</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> jsonify( &#123; <span class="string">'tasks'</span>: tasks &#125; )</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/todo/api/v1.0/tasks', methods = ['POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_task</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> request.json <span class="keyword">or</span> <span class="keyword">not</span> <span class="string">'title'</span> <span class="keyword">in</span> request.json:</span><br><span class="line">        abort(<span class="number">400</span>)</span><br><span class="line">    task = &#123;</span><br><span class="line">        <span class="string">'id'</span>: tasks[<span class="number">-1</span>][<span class="string">'id'</span>] + <span class="number">1</span>,</span><br><span class="line">        <span class="string">'title'</span>: request.json[<span class="string">'title'</span>],</span><br><span class="line">        <span class="string">'description'</span>: request.json.get(<span class="string">'description'</span>, <span class="string">""</span>),</span><br><span class="line">        <span class="string">'done'</span>: <span class="keyword">False</span></span><br><span class="line">    &#125;</span><br><span class="line">    tasks.append(task)</span><br><span class="line">    <span class="keyword">return</span> jsonify( &#123; <span class="string">'task'</span>: task &#125; ), <span class="number">201</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/todo/api/v1.0/tasks/&lt;int:task_id&gt;', methods = ['GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_task</span><span class="params">(task_id)</span>:</span></span><br><span class="line">    task = getTaskByID(task_id,tasks)</span><br><span class="line">    <span class="keyword">if</span> task == <span class="keyword">None</span>:</span><br><span class="line">        abort(<span class="number">404</span>)</span><br><span class="line">    <span class="keyword">return</span> jsonify( &#123; <span class="string">'task'</span>: task &#125; )</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/todo/api/v1.0/tasks/&lt;int:task_id&gt;', methods = ['DELETE'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete_task</span><span class="params">(task_id)</span>:</span></span><br><span class="line">    task = getTaskByID(task_id, tasks)</span><br><span class="line">    <span class="keyword">if</span> task == <span class="keyword">None</span>:</span><br><span class="line">        abort(<span class="number">404</span>)</span><br><span class="line">    tasks.remove(task)</span><br><span class="line">    <span class="keyword">return</span> jsonify( &#123; <span class="string">'result'</span>: <span class="keyword">True</span> &#125; )</span><br></pre></td></tr></table></figure></p>
+<p>这里看过大神文章的朋友都知道，这是他的不用　Flask-Restful API写的 Restful实现<br>这里主要就是将他的lamda 实现，用函数 get_task() 替代了 ，其他应该没什么差别<br>大家可以借鉴大神的blog，当然不用lamda只是本人的一种坚持，不知道在哪里看到的，flask对lamda支持不太行。。。。</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-img-container" id="donate-img-container">
+        <p>  </p>
+        <img id="donate-img" src="/img/donate.jpg" alt="感谢赞助">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/foreverbonfy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/bonfy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://blog.bonfy.im">BLOG</a></span>
+        <span>/</span>
+        
+        <span><a href="https://bonfy.im">Main Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    <p>&copy; 2018 <a href="https://bonfy.im">BONFY</a> &middot; 
+
+        Powered by the
+        <a href="https://hexo.io/">Hexo</a> Theme 
+        <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+  </p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/busuanzi.js"></script>
+
+</html>
