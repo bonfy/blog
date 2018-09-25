@@ -8,9 +8,9 @@ tags:
 
 一般计算机书的开头都是 Hello World
 
-我们亦不能免俗，所以本章我们的任务就是完成最简的 Hello World
+我们亦不能免俗，所以本章我们的任务就是完成最简单的 Hello World
 
-_本章的GitHub链接为：_ [Source](https://github.com/bonfy/go-mega-code/tree/01-Hello-World)
+_本章的GitHub链接为：_ [Source](https://github.com/bonfy/go-mega-code/tree/01-Hello-World), [Zip](https://github.com/bonfy/go-mega-code/archive/v0.1.zip)
 
 ## 建立目录结构
 
@@ -82,14 +82,14 @@ func ListenAndServe(addr string, handler Handler) error
 另外 输出　｀Hello World｀ 的办法，大致有三个，如下:
 
 ```go
-    // Case 1: w.Write byte
-	w.Write([]byte("Hello World"))
+// Case 1: w.Write byte
+w.Write([]byte("Hello World"))
 
-	// Case 2: fmt.Fprintf
-	fmt.Fprintf(w, "Hello World")
+// Case 2: fmt.Fprintf
+fmt.Fprintf(w, "Hello World")
 
-	// Case 3: io.Write
-	io.WriteString(w, "Hello World")
+// Case 3: io.Write
+io.WriteString(w, "Hello World")
 ```
 
 其中第一种用的是 ResponseWriter 的 `Write([]byte) (int, error)` 方法， 而 后面两种是稍微用到了 Go 里面interface 的特性， ResponseWriter interface 要实现 `Write([]byte) (int, error)` 的方法，所以也就实现了 io.Writer 方法，所以可以作为 io.Writer 的类型作为 后面两个函数的参数。
